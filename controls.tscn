@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://vd1v85u1xpqq"]
+
+[ext_resource type="Script" path="res://controls.gd" id="1_trof1"]
+[ext_resource type="Script" path="res://addons/simple_state_machine/state_machine.gd" id="2_dflss"]
+
+[node name="Controls" type="Node2D"]
+script = ExtResource("1_trof1")
+
+[node name="Button1" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "I'm a button"
+
+[node name="TriggerExplosion" type="Button" parent="."]
+offset_left = 1.0
+offset_top = 32.0
+offset_right = 142.0
+offset_bottom = 63.0
+text = "Trigger Explosion"
+
+[node name="TransitionState" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 65.0
+offset_right = 142.0
+offset_bottom = 96.0
+text = "Transition State"
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_dflss")
+States = Array[StringName]([&"Startss"])
+
+[connection signal="pressed" from="Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="TriggerExplosion" to="." method="_on_trigger_explosion_pressed"]
+[connection signal="pressed" from="TransitionState" to="." method="_on_transition_state_pressed"]
+[connection signal="transition" from="StateMachine" to="." method="_on_state_machine_transition"]
